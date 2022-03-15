@@ -1,0 +1,34 @@
+﻿@model MVC_SysInfo_UserManagement.ViewModels.UserListViewModel
+
+
+<div class="text-center">
+
+    <h1 class="display-4"> Detail</h1>
+    <table class="table">
+        <tr>
+            <th>UserName:</th>
+
+        
+        
+            <th>User Description:</th>
+        </tr>
+     
+        
+        @foreach (var user in Model.Users)
+        {
+
+        <tr>
+            
+            <td>@user.Name</td>
+          
+            <td>@user.Description</td>
+
+            
+
+
+        </tr>
+        }
+    </table>
+    <p></p>
+
+</div>
