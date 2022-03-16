@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace MVC_SysInfo_UserManagement
 {
     public class Startup
@@ -24,6 +25,9 @@ namespace MVC_SysInfo_UserManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +39,7 @@ namespace MVC_SysInfo_UserManagement
             }
             else
             {
+                
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -43,6 +48,8 @@ namespace MVC_SysInfo_UserManagement
             app.UseStaticFiles();
 
             app.UseRouting();
+            // must add in
+            app.UseSession();
 
             app.UseAuthorization();
 

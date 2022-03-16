@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVC_SysInfo_UserManagement.Models;
 using MVC_SysInfo_UserManagement.ViewModels;
@@ -12,6 +13,25 @@ namespace MVC_SysInfo_UserManagement.Controllers
 {
     public class HomeController : Controller
     {
+
+        public IActionResult Index()
+        {
+            UserListViewModel model = new UserListViewModel();
+            string username = HttpContext.Session.GetString("username");
+
+            if(username is not null)
+            {
+                model.Users = UserData.GetAllExcept(username);
+                ViewBag.loginUser = username;
+            }
+            else
+            {
+                model.Users = UserData.GetAll();
+            }
+            return View(model);
+        }
+
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -19,10 +39,7 @@ namespace MVC_SysInfo_UserManagement.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+       
 
         public IActionResult Privacy()
         {
@@ -62,6 +79,12 @@ namespace MVC_SysInfo_UserManagement.Controllers
 
             return View(model);
         }
+
+
+        
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

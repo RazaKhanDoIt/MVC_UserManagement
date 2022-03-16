@@ -14,6 +14,11 @@ namespace MVC_SysInfo_UserManagement.Models
             return Users;
         }
 
+        public static List<User> GetAllExcept(string username)
+        {
+            return Users.Where(x => !x.Name.Equals(username)).ToList();
+        }
+
         public static User GetById(int userId)
         {
             return Users.Single(x => x.UserId == userId);
@@ -27,6 +32,11 @@ namespace MVC_SysInfo_UserManagement.Models
         public static bool Remove(int userId)
         {
             return Users.Remove(GetById(userId));
+        }
+
+        static public bool Exists(string username)
+        {
+            return Users.Exists(x => x.Name.Equals(username));
         }
     }
 }

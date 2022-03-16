@@ -1,15 +1,21 @@
-﻿<h1>Add User</h1>
+﻿@model  MVC_SysInfo_UserManagement.ViewModels.NewUserViewModel
+
+<h1>Add User</h1>
 
 <form method="post">
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input class=" form-control" name="name" id="name" type="text"/>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class=" form-control" name="name" id="name" type="text"/>
 
-    </div>
-    <div class="form-group">
-        <label for=" description"> Description</label>
-        <input class="form-control" name="description" id="description" type="text"/>
-    </div>
-    <input type="submit" value="Add User"/>
-</form>
+        </div>
+        <div class="form-group">
+            <label for=" description"> Description</label>
+            <input class="form-control" name="description" id="description" type="text"/>
+        </div>
+        <input type="submit" value="Add User" />
+    </form> 
+
+
+
+

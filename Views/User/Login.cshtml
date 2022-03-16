@@ -1,0 +1,21 @@
+﻿@if (String.IsNullOrEmpty(ViewBag.errorMessage))
+    {
+        <p> @ViewBag.error </p>
+
+    }
+
+<h1>Login</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label for="username"> username</label>
+        <input class="form-control" name="username" id="username" type="text" />
+
+
+
+    </div>
+    <input type="submit" value="Login" />
+
+
+</form>
